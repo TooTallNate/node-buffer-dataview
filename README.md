@@ -8,7 +8,7 @@ instances, and not Node's preferred `Buffer` type. This is mostly useful when
 interacting with previously written code which interacts with `DataView` instances
 rather than Node.js Buffers.
 
-This `DataView` instances simply proxy the invoked instance method to the
+The `DataView` instances simply proxy the invoked instance method to the
 equivalent [Buffer API][] call.
 
 Note that the `buffer` property of the `DataView` instance is the Node.js `Buffer`
