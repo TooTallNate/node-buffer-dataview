@@ -1,0 +1,25 @@
+{
+  "name": "buffer-dataview",
+  "version": "0.0.0",
+  "description": "Minimal DataView implementation that works with Node.js Buffers",
+  "main": "dataview.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TooTallNate/node-buffer-dataview.git"
+  },
+  "keywords": [
+    "node",
+    "buffer",
+    "data",
+    "view",
+    "dataview"
+  ],
+  "author": "Nathan Rajlich <nathan@tootallnate.net> (http://n8.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TooTallNate/node-buffer-dataview/issues"
+  }
+}
