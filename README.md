@@ -2,6 +2,18 @@ buffer-dataview
 ===============
 ### Minimal DataView implementation that works with Node.js Buffers
 
+This module provides a very minimal [DataView][] implementation. Node.js already
+comes with a DataView implementation, but it only works with `ArrayBuffer`
+instances, and not Node's preferred `Buffer` type. This is mostly useful when
+interacting with previously written code which interacts with `DataView` instances
+rather than Node.js Buffers.
+
+This `DataView` instances simply proxy the invoked instance method to the
+equivalent [Buffer API][] call.
+
+Note that the `buffer` property of the `DataView` instance is the Node.js `Buffer`
+instance, and _not_ a converted `ArrayBuffer` or something else like that. There's
+no copying that happens here, it's just a "view"...
 
 Installation
 ------------
@@ -17,6 +29,17 @@ Example
 -------
 
 ``` js
+var DataView = require('buffer-dataview');
+
+var buffer = new Buffer(4);
+var view = new DataView(buffer);
+
+// set a "float" in the data view
+view.setFloat32(0, 1337.1234, true);
+
+// ensure that the original Buffer was modified
+console.log(buffer.readFloatLE(0));
+// → 1337.1234130859375
 ```
 
 
@@ -45,3 +68,6 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+[DataView]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays/DataView
+[Buffer API]: http://nodejs.org/docs/latest/api/buffer.html
