@@ -33,17 +33,29 @@ function DataView (buffer, byteOffset, byteLength) {
  */
 
 DataView.prototype.getInt8 = function (byteOffset) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   return this.buffer.readInt8(offset);
 };
 
 DataView.prototype.getUint8 = function (byteOffset) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   return this.buffer.readUInt8(offset);
 };
 
 DataView.prototype.getInt16 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readInt16LE(offset);
   } else {
@@ -52,7 +64,11 @@ DataView.prototype.getInt16 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getUint16 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readUInt16LE(offset);
   } else {
@@ -61,7 +77,11 @@ DataView.prototype.getUint16 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getInt32 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readInt32LE(offset);
   } else {
@@ -70,7 +90,11 @@ DataView.prototype.getInt32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getUint32 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readUInt32LE(offset);
   } else {
@@ -79,7 +103,11 @@ DataView.prototype.getUint32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getFloat32 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readFloatLE(offset);
   } else {
@@ -88,7 +116,11 @@ DataView.prototype.getFloat32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getFloat64 = function (byteOffset, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     return this.buffer.readDoubleLE(offset);
   } else {
@@ -101,17 +133,30 @@ DataView.prototype.getFloat64 = function (byteOffset, littleEndian) {
  */
 
 DataView.prototype.setInt8 = function (byteOffset, value) {
-  var offset = this.byteOffset + byteOffset;
+  console.log(arguments);
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   this.buffer.writeInt8(value, offset);
 };
 
 DataView.prototype.setUint8 = function (byteOffset, value) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   this.buffer.writeUInt8(value, offset);
 };
 
 DataView.prototype.setInt16 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeInt16LE(value, offset);
   } else {
@@ -120,7 +165,11 @@ DataView.prototype.setInt16 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setUint16 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeUInt16LE(value, offset);
   } else {
@@ -129,7 +178,11 @@ DataView.prototype.setUint16 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setInt32 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeInt32LE(value, offset);
   } else {
@@ -138,7 +191,11 @@ DataView.prototype.setInt32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setUint32 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeUInt32LE(value, offset);
   } else {
@@ -147,7 +204,11 @@ DataView.prototype.setUint32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setFloat32 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeFloatLE(value, offset);
   } else {
@@ -156,7 +217,11 @@ DataView.prototype.setFloat32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setFloat64 = function (byteOffset, value, littleEndian) {
-  var offset = this.byteOffset + byteOffset;
+  var offset = this.byteOffset + (byteOffset | 0);
+  var max = this.byteOffset + this.byteLength - 1;
+  if (offset < this.byteOffset || offset > max) {
+    throw new RangeError('Offset is outside the bounds of the DataView');
+  }
   if (littleEndian) {
     this.buffer.writeDoubleLE(value, offset);
   } else {
