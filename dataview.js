@@ -133,7 +133,6 @@ DataView.prototype.getFloat64 = function (byteOffset, littleEndian) {
  */
 
 DataView.prototype.setInt8 = function (byteOffset, value) {
-  console.log(arguments);
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
