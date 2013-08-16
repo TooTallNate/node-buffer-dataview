@@ -1,6 +1,6 @@
 {
   "name": "buffer-dataview",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Minimal DataView implementation that works with Node.js Buffers",
   "main": "dataview.js",
   "scripts": {
