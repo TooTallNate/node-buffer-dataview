@@ -33,6 +33,7 @@ function DataView (buffer, byteOffset, byteLength) {
  */
 
 DataView.prototype.getInt8 = function (byteOffset) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -42,6 +43,7 @@ DataView.prototype.getInt8 = function (byteOffset) {
 };
 
 DataView.prototype.getUint8 = function (byteOffset) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -51,6 +53,7 @@ DataView.prototype.getUint8 = function (byteOffset) {
 };
 
 DataView.prototype.getInt16 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -64,6 +67,7 @@ DataView.prototype.getInt16 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getUint16 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -77,6 +81,7 @@ DataView.prototype.getUint16 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getInt32 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -90,6 +95,7 @@ DataView.prototype.getInt32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getUint32 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -103,6 +109,7 @@ DataView.prototype.getUint32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getFloat32 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -116,6 +123,7 @@ DataView.prototype.getFloat32 = function (byteOffset, littleEndian) {
 };
 
 DataView.prototype.getFloat64 = function (byteOffset, littleEndian) {
+  if (arguments.length < 1) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -133,6 +141,7 @@ DataView.prototype.getFloat64 = function (byteOffset, littleEndian) {
  */
 
 DataView.prototype.setInt8 = function (byteOffset, value) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -144,6 +153,7 @@ DataView.prototype.setInt8 = function (byteOffset, value) {
 };
 
 DataView.prototype.setUint8 = function (byteOffset, value) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -155,6 +165,7 @@ DataView.prototype.setUint8 = function (byteOffset, value) {
 };
 
 DataView.prototype.setInt16 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -170,6 +181,7 @@ DataView.prototype.setInt16 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setUint16 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -185,6 +197,7 @@ DataView.prototype.setUint16 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setInt32 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -200,6 +213,7 @@ DataView.prototype.setInt32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setUint32 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -215,6 +229,7 @@ DataView.prototype.setUint32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setFloat32 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
@@ -228,6 +243,7 @@ DataView.prototype.setFloat32 = function (byteOffset, value, littleEndian) {
 };
 
 DataView.prototype.setFloat64 = function (byteOffset, value, littleEndian) {
+  if (arguments.length < 2) throw new TypeError('invalid_argument');
   var offset = this.byteOffset + (byteOffset | 0);
   var max = this.byteOffset + this.byteLength - 1;
   if (offset < this.byteOffset || offset > max) {
