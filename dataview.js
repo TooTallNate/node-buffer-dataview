@@ -138,6 +138,8 @@ DataView.prototype.setInt8 = function (byteOffset, value) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from -128 to 128
+  value = ((value + 128) & 255) - 128;
   this.buffer.writeInt8(value, offset);
 };
 
@@ -147,6 +149,8 @@ DataView.prototype.setUint8 = function (byteOffset, value) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from 0 to 255
+  value = value & 255;
   this.buffer.writeUInt8(value, offset);
 };
 
@@ -156,6 +160,8 @@ DataView.prototype.setInt16 = function (byteOffset, value, littleEndian) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from -32768 to 32768
+  value = ((value + 32768) & 65535) - 32768;
   if (littleEndian) {
     this.buffer.writeInt16LE(value, offset);
   } else {
@@ -169,6 +175,8 @@ DataView.prototype.setUint16 = function (byteOffset, value, littleEndian) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from 0 to 65535
+  value = value & 65535;
   if (littleEndian) {
     this.buffer.writeUInt16LE(value, offset);
   } else {
@@ -182,6 +190,8 @@ DataView.prototype.setInt32 = function (byteOffset, value, littleEndian) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from -2147483648 to 2147483648
+  value |= 0;
   if (littleEndian) {
     this.buffer.writeInt32LE(value, offset);
   } else {
@@ -195,6 +205,8 @@ DataView.prototype.setUint32 = function (byteOffset, value, littleEndian) {
   if (offset < this.byteOffset || offset > max) {
     throw new RangeError('Offset is outside the bounds of the DataView');
   }
+  // wrap the `value` from 0 to 4294967295
+  value = value >>> 0;
   if (littleEndian) {
     this.buffer.writeUInt32LE(value, offset);
   } else {
