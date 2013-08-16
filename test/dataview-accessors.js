@@ -31,6 +31,9 @@ var assert = require('assert');
 var assertThrows = assert.throws;
 var assertSame = assert.equal;
 
+// load our custom NodeDataView
+var DataView = require('../');
+
 var intArray1 =
   [0, 1, 2, 3, 100, 101, 102, 103, 128, 129, 130, 131, 252, 253, 254, 255];
 var intArray2 =
@@ -105,7 +108,7 @@ function createDataView(
   if (!littleEndian)
     array.reverse();
   var paddingArray = new Array(frontPaddingNum);
-  arrayBuffer = (new Uint8Array(paddingArray.concat(array))).buffer;
+  arrayBuffer = new Buffer(paddingArray.concat(array));
   view = new DataView(arrayBuffer, viewStart, viewLength);
   if (!littleEndian)
     array.reverse(); // restore the array.
@@ -304,7 +307,7 @@ TestGetters();
 TestSetters();
 
 function CheckOutOfRangeInt8(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setInt8(0, value));
   assertSame(expected, view.getInt8(0));
   assertSame(undefined, view.setInt8(0, value, true));
@@ -312,7 +315,7 @@ function CheckOutOfRangeInt8(value, expected) {
 }
 
 function CheckOutOfRangeUint8(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setUint8(0, value));
   assertSame(expected, view.getUint8(0));
   assertSame(undefined, view.setUint8(0, value, true));
@@ -320,7 +323,7 @@ function CheckOutOfRangeUint8(value, expected) {
 }
 
 function CheckOutOfRangeInt16(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setInt16(0, value));
   assertSame(expected, view.getInt16(0));
   assertSame(undefined, view.setInt16(0, value, true));
@@ -328,7 +331,7 @@ function CheckOutOfRangeInt16(value, expected) {
 }
 
 function CheckOutOfRangeUint16(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setUint16(0, value));
   assertSame(expected, view.getUint16(0));
   assertSame(undefined, view.setUint16(0, value, true));
@@ -336,7 +339,7 @@ function CheckOutOfRangeUint16(value, expected) {
 }
 
 function CheckOutOfRangeInt32(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setInt32(0, value));
   assertSame(expected, view.getInt32(0));
   assertSame(undefined, view.setInt32(0, value, true));
@@ -344,7 +347,7 @@ function CheckOutOfRangeInt32(value, expected) {
 }
 
 function CheckOutOfRangeUint32(value, expected) {
-  var view = new DataView(new ArrayBuffer(100));
+  var view = new DataView(new Buffer(100));
   assertSame(undefined, view.setUint32(0, value));
   assertSame(expected, view.getUint32(0));
   assertSame(undefined, view.setUint32(0, value, true));
@@ -386,7 +389,7 @@ function TestOutOfRange() {
 TestOutOfRange();
 
 function TestGeneralAccessors() {
-  var a = new DataView(new ArrayBuffer(256));
+  var a = new DataView(new Buffer(256));
   function CheckAccessor(name) {
     var f = a[name];
     assertThrows(function() { f(); }, TypeError);
@@ -420,7 +423,7 @@ function TestGeneralAccessors() {
 TestGeneralAccessors();
 
 function TestInsufficientArguments() {
-  var a = new DataView(new ArrayBuffer(256));
+  var a = new DataView(new Buffer(256));
 
   assertThrows(function() { a.getUint8(); }, TypeError);
   assertThrows(function() { a.getInt8(); }, TypeError);
