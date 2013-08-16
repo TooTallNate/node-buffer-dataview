@@ -24,8 +24,8 @@ function DataView (buffer, byteOffset, byteLength) {
   if (null == byteOffset) byteOffset = 0;
   if (null == byteLength) byteLength = buffer.length;
   this.buffer = buffer;
-  this.byteOffset = byteOffset;
-  this.byteLength = byteLength;
+  this.byteOffset = byteOffset | 0;
+  this.byteLength = byteLength | 0;
 }
 
 /**
