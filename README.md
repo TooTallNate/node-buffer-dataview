@@ -5,7 +5,7 @@ buffer-dataview
 This module provides a very minimal [DataView][] implementation. Node.js already
 comes with a DataView implementation, but it only works with `ArrayBuffer`
 instances, and not Node's preferred `Buffer` type. This is mostly useful when
-interacting with previously written code which interacts with `DataView` instances
+re-using previously written code which interacts with `DataView` instances
 rather than Node.js Buffers.
 
 The `DataView` instances simply proxy the invoked instance method to the
