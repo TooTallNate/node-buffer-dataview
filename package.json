@@ -4,7 +4,7 @@
   "description": "Minimal DataView implementation that works with Node.js Buffers",
   "main": "dataview.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/dataview-accessors.js"
   },
   "repository": {
     "type": "git",
