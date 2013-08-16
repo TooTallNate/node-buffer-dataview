@@ -20,7 +20,7 @@ module.exports = DataView;
 
 function DataView (buffer, byteOffset, byteLength) {
   if (!(this instanceof DataView)) throw new TypeError('Constructor DataView requires \'new\'');
-  if (null == buffer.length) throw new TypeError('First argument to DataView constructor must be a Buffer');
+  if (!buffer || null == buffer.length) throw new TypeError('First argument to DataView constructor must be a Buffer');
   if (null == byteOffset) byteOffset = 0;
   if (null == byteLength) byteLength = buffer.length;
   this.buffer = buffer;
